@@ -98,8 +98,9 @@ footer button{background:none;border:0;color:var(--muted);text-decoration:underl
 
     <section class="card">
       <h2>Everyday shortcuts</h2>
-      <p class="muted small">For home: these open your live apps on claude.ai, each with its own icon and window. Open one, then tap <b>⋮ → Add to Home screen</b>.</p>
-      <div class="grid" id="homeApps"></div>
+      <p class="muted small">For home: your live claude.ai apps, each with its own icon. They have to be installed from Chrome itself, not from inside this Travel app.</p>
+      <ol class="steps"><li>Open <b>Chrome</b> and type <b>tonyintransit.github.io/travel-apps/go</b></li><li>Tap an app, then tap <b>Install</b>.</li></ol>
+      <div class="row"><button class="btn ghost" id="copyGo" type="button">Copy the address</button></div>
     </section>
 
     <section class="card" id="dataCard">
@@ -138,7 +139,7 @@ footer button{background:none;border:0;color:var(--muted);text-decoration:underl
 <script>
 (function(){
 "use strict";
-const CFG = {"version": "20261027-9b6ae359", "salt": "RMK2C3wZ/Uned5zfC2nx0A==", "iter": 600000, "apps": [{"id": "wellnow", "name": "Well Now"}, {"id": "summarizy", "name": "Summarizy"}, {"id": "editprox", "name": "EditproX"}, {"id": "veganremix", "name": "VeganRemix"}, {"id": "list", "name": "List"}, {"id": "zen", "name": "Zen&"}, {"id": "gongdak", "name": "Gong Dak"}, {"id": "master", "name": "The Master"}, {"id": "french", "name": "Rue du Fran\u00e7ais"}]};
+const CFG = {"version": "20261027-fbbe8419", "salt": "RMK2C3wZ/Uned5zfC2nx0A==", "iter": 600000, "apps": [{"id": "wellnow", "name": "Well Now"}, {"id": "summarizy", "name": "Summarizy"}, {"id": "editprox", "name": "EditproX"}, {"id": "veganremix", "name": "VeganRemix"}, {"id": "list", "name": "List"}, {"id": "zen", "name": "Zen&"}, {"id": "gongdak", "name": "Gong Dak"}, {"id": "master", "name": "The Master"}, {"id": "french", "name": "Rue du Fran\u00e7ais"}]};
 const $ = s => document.querySelector(s);
 const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 function toast(t){ const el = $("#toast"); el.textContent = t; el.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(() => el.hidden = true, 4000); }
@@ -188,7 +189,7 @@ $("#lockBtn").onclick = async () => { const d = await KDB(); await req(d, "k", "
 /* ---- apps ---- */
 function renderApps(){
   $("#apps").innerHTML = CFG.apps.map(a => `<a class="app" href="a/${a.id}/"><img src="a/${a.id}/icon-192.png" alt="" width="58" height="58">${esc(a.name)}</a>`).join("");
-  $("#homeApps").innerHTML = CFG.apps.map(a => `<a class="app" href="go/${a.id}/"><img src="a/${a.id}/icon-192.png" alt="" width="58" height="58">${esc(a.name)}</a>`).join("");
+  $("#copyGo").onclick = async () => { const u = new URL("go/", location.href).href; try { await navigator.clipboard.writeText(u); toast("Copied. Paste it into Chrome's address bar."); } catch(e){ prompt("Copy this:", u); } };
   $("#askApp").innerHTML = `<option value="">Any app</option>` + CFG.apps.map(a => `<option value="${a.id}">${esc(a.name)}</option>`).join("");
 }
 

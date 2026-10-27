@@ -2,10 +2,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Zen&</title><meta name="robots" content="noindex, nofollow"><meta name="theme-color" content="#15191D">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="../../a/zen/icon-192.png">
-<script>if (matchMedia("(display-mode: standalone)").matches || matchMedia("(display-mode: minimal-ui)").matches || new URLSearchParams(location.search).has("go")) location.replace("https://claude.ai/artifact/VrWWr5a6wneM143PiGZGiU");</script>
+<script>if (new URLSearchParams(location.search).has("go")) location.replace("https://claude.ai/artifact/VrWWr5a6wneM143PiGZGiU");</script>
 <style>body{margin:0;font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;background:#15191D;color:#fff;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;box-sizing:border-box;text-align:center}
 img{width:96px;height:96px;border-radius:24px;box-shadow:0 4px 16px rgba(0,0,0,.3)} h1{font-size:24px;margin:14px 0 6px} p{margin:6px auto;max-width:340px;opacity:.9}
 a{display:inline-block;margin-top:16px;background:#fff;color:#111;font-weight:700;border-radius:12px;padding:12px 18px;text-decoration:none}</style></head>
 <body><main><img src="../../a/zen/icon-512.png" alt=""><h1>Zen&</h1>
-<p>Everyday shortcut to your live Zen& on claude.ai.</p><p>To install it: tap <b>⋮</b> then <b>Add to Home screen</b> or <b>Install</b>. The icon then opens Zen& in its own window.</p>
-<a href="https://claude.ai/artifact/VrWWr5a6wneM143PiGZGiU">Open Zen& now</a></main></body></html>
+<p>Everyday shortcut to your live Zen& on claude.ai.</p>
+<button id="inst" hidden style="margin-top:16px;background:#F2B43C;color:#1d1406;font:700 17px system-ui,sans-serif;border:0;border-radius:12px;padding:14px 22px">Install Zen&</button>
+<p id="how">To install it: tap <b>⋮</b> then <b>Install app</b> or <b>Add to Home screen</b>. The icon then opens Zen& in its own window.</p>
+<p><a href="https://claude.ai/artifact/VrWWr5a6wneM143PiGZGiU">Open Zen& now</a> <a href="../" style="background:transparent;color:#fff;border:1px solid rgba(255,255,255,.6)">All apps</a></p></main>
+<script>let ev=null;addEventListener("beforeinstallprompt",e=>{e.preventDefault();ev=e;const b=document.getElementById("inst");b.hidden=false;document.getElementById("how").textContent="Tap the button to put Zen& on your home screen with its own icon.";b.onclick=async()=>{ev.prompt();await ev.userChoice;b.hidden=true;};});
+addEventListener("appinstalled",()=>{document.getElementById("how").textContent="Installed. Use the new Zen& icon on your home screen.";});
+if("serviceWorker" in navigator) navigator.serviceWorker.register("../../sw.js").catch(()=>{});</script></body></html>
