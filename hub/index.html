@@ -140,7 +140,7 @@ footer button{background:none;border:0;color:var(--muted);text-decoration:underl
 <script>
 (function(){
 "use strict";
-const CFG = {"version": "20261027-2498db79", "salt": "RMK2C3wZ/Uned5zfC2nx0A==", "iter": 600000, "apps": [{"id": "wellnow", "name": "Well Now"}, {"id": "summarizy", "name": "Summarizy"}, {"id": "editprox", "name": "EditproX"}, {"id": "veganremix", "name": "VeganRemix"}, {"id": "list", "name": "List"}, {"id": "zen", "name": "Zen&"}, {"id": "gongdak", "name": "Gong Dak"}, {"id": "master", "name": "The Master"}, {"id": "french", "name": "Rue du Fran\u00e7ais"}]};
+const CFG = {"version": "20261027-794a55d3", "salt": "RMK2C3wZ/Uned5zfC2nx0A==", "iter": 600000, "apps": [{"id": "wellnow", "name": "Well Now"}, {"id": "summarizy", "name": "Summarizy"}, {"id": "editprox", "name": "EditproX"}, {"id": "veganremix", "name": "VeganRemix"}, {"id": "list", "name": "List"}, {"id": "zen", "name": "Zen&"}, {"id": "gongdak", "name": "Gong Dak"}, {"id": "master", "name": "The Master"}, {"id": "french", "name": "Rue du Fran\u00e7ais"}]};
 const $ = s => document.querySelector(s);
 const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 function toast(t){ const el = $("#toast"); el.textContent = t; el.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(() => el.hidden = true, 4000); }
